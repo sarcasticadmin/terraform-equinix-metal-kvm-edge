@@ -19,7 +19,7 @@ resource "equinix_metal_device" "edge" {
   operating_system = var.edge_os
   billing_cycle    = var.billing_cycle
   project_id       = var.project_id
-  user_data        = templatefile("build-kvm-tf.sh", { pub_ip = equinix_metal_reserved_ip_block.routed.cidr_notation })
+  user_data        = templatefile("${path.module}/build-kvm-tf.sh", { pub_ip = equinix_metal_reserved_ip_block.routed.cidr_notation })
 }
 
 # Change network mode to hybrid-unbonded for the edge instance
